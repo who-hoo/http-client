@@ -51,7 +51,7 @@ public class Browser {
 
             out.close();
             in.close();
-        } catch(UnknownHostException e) {
+        } catch (UnknownHostException e) {
             throw new IllegalArgumentException("해당 도메인이 존재하지 않습니다.");
         } catch (IOException e) {
             throw new IllegalArgumentException("연결에 실패하였습니다.");
