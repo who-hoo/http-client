@@ -1,5 +1,6 @@
 package http.request;
 
+import http.HttpMethod;
 import java.net.URL;
 
 public class RequestLine {
