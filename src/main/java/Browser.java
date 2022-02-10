@@ -16,16 +16,12 @@ public class Browser {
         }
     }
 
-    private List<String> findHostAddresses(URL url) throws IllegalArgumentException {
+    private List<String> findHostAddresses(URL url) throws UnknownHostException {
         List<String> hostAddressList = new ArrayList<>();
-        try {
-            System.out.println("(DNS Lookup...)");
-            InetAddress[] allByName = InetAddress.getAllByName(url.getHost());
-            for (InetAddress inetAddress : allByName) {
-                hostAddressList.add(inetAddress.getHostAddress());
-            }
-        } catch (UnknownHostException e) {
-            throw new IllegalArgumentException("해당 도메인이 존재하지 않습니다.");
+        System.out.println("(DNS Lookup...)");
+        InetAddress[] allByName = InetAddress.getAllByName(url.getHost());
+        for (InetAddress inetAddress : allByName) {
+            hostAddressList.add(inetAddress.getHostAddress());
         }
         return hostAddressList;
     }
