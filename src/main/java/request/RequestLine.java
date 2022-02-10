@@ -5,7 +5,7 @@ import java.net.URL;
 public class RequestLine {
 
     private final String SP = " ";
-    private final String CRLF = "\n";
+    private final String CRLF = "\r\n";
 
     private final HttpMethod method;
     private final String requestTarget;
