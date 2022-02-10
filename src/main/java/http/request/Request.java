@@ -1,6 +1,5 @@
-package request;
+package http.request;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Request {
