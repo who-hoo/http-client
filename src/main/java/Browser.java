@@ -1,3 +1,5 @@
+import io.InputView;
+import io.OutputView;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -13,6 +15,18 @@ import java.util.List;
 import request.Request;
 
 public class Browser {
+
+    private InputView input = new InputView();
+    private OutputView output = new OutputView();
+
+    public void run() {
+        try {
+            URL url = getUrl(input.getUserInputURL());
+            connect(url);
+        } catch (IllegalArgumentException e) {
+            output.print(e.getMessage());
+        }
+    }
 
     private URL getUrl(String input) throws IllegalArgumentException {
         try {
