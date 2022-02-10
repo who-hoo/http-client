@@ -1,10 +1,10 @@
-package http.request;
+package http;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class RequestHeaders {
+public class Header {
 
     private final String DELIMITER = ": ";
     private final String CRLF = "\r\n";

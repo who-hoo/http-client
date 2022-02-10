@@ -1,14 +1,14 @@
-package http.request;
+package http;
 
-public class MessageBody {
+public class Body {
 
     String body;
 
-    public MessageBody() {
+    public Body() {
         this.body = "";
     }
 
-    public MessageBody(String body) {
+    public Body(String body) {
         this.body = body;
     }
 
