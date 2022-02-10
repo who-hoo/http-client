@@ -19,6 +19,7 @@ public class Browser {
     private List<String> findHostAddresses(URL url) throws IllegalArgumentException {
         List<String> hostAddressList = new ArrayList<>();
         try {
+            System.out.println("(DNS Lookup...)");
             InetAddress[] allByName = InetAddress.getAllByName(url.getHost());
             for (InetAddress inetAddress : allByName) {
                 hostAddressList.add(inetAddress.getHostAddress());
