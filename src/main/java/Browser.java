@@ -10,6 +10,7 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import request.Request;
 
 public class Browser {
 
@@ -45,9 +46,13 @@ public class Browser {
             BufferedWriter out = new BufferedWriter(
                 new OutputStreamWriter(socket.getOutputStream()));
 
-            // TODO: Request 객체 생성
-            // TODO: Request 메시지 전송
-            // TODO: Response 처리
+            Request req = new Request(url);
+            req.addHeader("Accept", "text/html");
+            req.addHeader("Host", url.getHost());
+            req.addHeader("User-Agent", "Mozilla/5.0");
+
+            sendRequestMessage(out, req);
+            readResponse(in);
 
             out.close();
             in.close();
@@ -55,6 +60,24 @@ public class Browser {
             throw new IllegalArgumentException("해당 도메인이 존재하지 않습니다.");
         } catch (IOException e) {
             throw new IllegalArgumentException("연결에 실패하였습니다.");
+        }
+    }
+
+    private void sendRequestMessage(BufferedWriter out, Request req) throws IOException {
+        System.out.println("\n * Request");
+
+        System.out.println(req.getMessage());
+        out.write(req.getMessage());
+        out.write("\r\n");
+        out.flush();
+    }
+
+    private void readResponse(BufferedReader in) throws IOException {
+        System.out.println("\n * Response");
+
+        String line;
+        while ((line = in.readLine()) != null) {
+            System.out.println(line);
         }
     }
 }
